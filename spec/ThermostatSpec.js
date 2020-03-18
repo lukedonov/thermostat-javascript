@@ -70,4 +70,31 @@ describe('Thermostat', function() {
     thermostat.resetTemp();
     expect(thermostat.getCurrentTemp()).toEqual(20);
   });
+  describe("checking the energy usage", function() {
+    describe("rwhen the temp is below 18 degrees", function() { 
+      it("is low-usage", function() {
+        for (var i=0; i < 3; i++) {
+          thermostat.decreaseTemp();
+        }
+        expect(thermostat.showEnergyUsage()).toEqual("low-usage");
+      });
+    });
+
+    describe('when the temp is between 18-25 degrees', function() {
+      it('is medium usage', function() {
+        expect(thermostat.showEnergyUsage()).toEqual('medium-usage');
+      });
+    });
+
+    describe('when the temp is higher than 25', function () {
+      it('is considered high usage', function() {
+        thermostat.powerSaving = false;
+        for(var i=0; i < 10; i++) {
+          thermostat.increaseTemp();
+        };
+        expect(thermostat.showEnergyUsage()).toEqual('high-usage')
+      })
+    })
+  });
 });
+
