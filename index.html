@@ -4,6 +4,7 @@
     <title>Thermostat</title>
   </head>
   <body>
+    <link rel="stylesheet" href="public/therm-style.css">
     <section>
       <h1 id="temperature"></h1>
       <p>
@@ -17,5 +18,46 @@
     </section>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="src/thermostat.js"></script>
+    <script>
+      $(document).ready(function() {
+        var thermostat = new Thermostat();
+        $('#temperature').text(thermostat.temperature);
+
+        $('#temperature-up').click(function() {
+          thermostat.increaseTemp();
+          updateTemperature();
+        })
+
+        $('#temperature-down').click(function() {
+          thermostat.decreaseTemp();
+          $('#temperature').text(thermostat.temperature)
+          updateTemperature();
+        })
+
+        $('#powersaving-off').click(function() {
+          thermostat.switchPowerSavingModeOff();
+          updateTemperature();
+        })
+
+        $('#powersaving-off').click(function() {
+          thermostat.switchPowerSavingModeOff();
+          updateTemperature();
+        })
+
+        $('#powersaving-on').click(function() {
+          thermostat.switchPowerSavingModeOn();
+          updateTemperature();
+        })
+
+        $('#temperature-reset').click(function() {
+          thermostat.resetTemp();
+          updateTemperature();
+        })
+        function updateTemperature() {
+          $('#temperature').text(thermostat.temperature);
+          $('#temperature').attr('class', thermostat.showEnergyUsage());
+        }
+      });
+    </script>
   </body>
 </html>

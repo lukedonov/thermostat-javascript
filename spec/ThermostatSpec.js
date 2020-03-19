@@ -93,8 +93,8 @@ describe('Thermostat', function() {
           thermostat.increaseTemp();
         };
         expect(thermostat.showEnergyUsage()).toEqual('high-usage')
-      })
-    })
+      });
+    });
   });
 });
 

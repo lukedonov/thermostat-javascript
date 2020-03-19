@@ -69,7 +69,7 @@ Thermostat.prototype.resetTemp = function() {
   this.temperature = this.DEF_TEMP;
 };
 
-$(document).ready(function() {
-  var thermostat = new Thermostat();
-  $('#temperature').text(`The temperature is ${thermostat.temperature}`);
-})
+
+
+
+
